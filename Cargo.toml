@@ -10,3 +10,7 @@ members = [
 ]
 
 [dependencies]
+tokio = "1.47.1"
+anyhow = "1.0.99"
+solana-sdk = "2.3.0"
+solana-client = "2.3.7"
