@@ -1,6 +1,6 @@
-mod state;
-mod instructions;
-mod process;
+pub mod state;
+pub mod instructions;
+pub mod process;
 
 use solana_program::entrypoint;
 
