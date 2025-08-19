@@ -8,6 +8,7 @@ resolver = "3"
 members = [
   "account-data/program",
   "checking-account/program",
+  "close-account/program",
   "tests"
 ]
 

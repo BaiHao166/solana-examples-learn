@@ -69,10 +69,17 @@ mod test {
         transaction.sign(&[&wallet_keypair, &account_to_create_kaypair, &account_to_change_keypair], latest_block_hash);
 
         // 6. 发送交易
-        let sign = client.send_and_confirm_transaction(&transaction).await.unwrap();
+        let result = client.send_and_confirm_transaction(&transaction).await;
 
-        println!("交易成功，交易id为：{}", sign);
-        println!("账户地址(创建）为：{}", account_to_create_kaypair.pubkey());
-        println!("账户地址(修改)为：{}", account_to_change_keypair.pubkey());
+        match result {
+            Ok(sign) => {
+                println!("交易成功，交易id为：{}", sign);
+                println!("账户地址(创建）为：{}", account_to_create_kaypair.pubkey());
+                println!("账户地址(修改)为：{}", account_to_change_keypair.pubkey());
+            },
+            Err(err) => println!("交易失败，错误信息为：{}", err)
+        }
+
+
     }
 }
