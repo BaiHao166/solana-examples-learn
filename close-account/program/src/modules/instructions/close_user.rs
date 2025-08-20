@@ -18,7 +18,7 @@ pub fn close_user(accounts: &[AccountInfo]) -> ProgramResult {
 
     if target_account.lamports() == 0 {
         msg!("账户已被关闭或不存在");
-        return Err(ProgramError::AccountAlreadyInitialized);
+        return Err(ProgramError::UninitializedAccount);
     }
 
     // 计算 0 空间所需的最小费用
@@ -29,7 +29,7 @@ pub fn close_user(accounts: &[AccountInfo]) -> ProgramResult {
     let diff = **target_account.lamports.borrow_mut() - lamports_required;
 
     // 被关闭账户只保留关闭账户操作需要的花费
-    **target_account.lamports.borrow_mut() -= lamports_required;
+    **target_account.lamports.borrow_mut() -= diff;
 
     // 被关闭账户剩余的费用退回给用户
     **payer.lamports.borrow_mut() += diff;

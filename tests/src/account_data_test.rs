@@ -15,11 +15,11 @@ mod tests {
     use account_data::{
         state::address_info::AddressInfo
     };
+    use crate::MY_WALLET_PRIVATE_KEY;
 
     #[test]
     fn it_works() {
-        let keypair_bytes = [57,31,147,125,165,139,15,249,52,197,17,228,255,110,178,89,214,19,139,250,164,200,21,5,199,57,38,39,228,186,181,199,36,194,113,204,19,57,114,146,117,28,181,50,5,220,54,239,194,26,86,82,105,107,121,30,71,108,236,42,74,153,10,230];
-        let my_wallet = Keypair::from_bytes(&keypair_bytes).unwrap();
+        let my_wallet = Keypair::from_bytes(MY_WALLET_PRIVATE_KEY).unwrap();
 
         let program_id = Pubkey::from_str("7iKmQ7nd9FDr3qZGmgZCg1FBPs7ws6iDV8sdDBdH5cRc")
             .expect("智能合约id无效");
