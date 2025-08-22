@@ -7,7 +7,7 @@ use solana_program::pubkey::Pubkey;
 
 #[cfg(not(feature = "no-entrypoint"))]
 use solana_program::entrypoint;
-use solana_program::{msg, system_instruction, system_program};
+use solana_program::{msg, pubkey, system_instruction, system_program};
 use solana_program::program::invoke;
 use solana_program::program_error::ProgramError;
 use solana_program::rent::Rent;
@@ -36,7 +36,7 @@ pub fn process_instruction(
         },
         1 => {
             msg!("指令：创建计数账户");
-            return create_counter(accounts, instruction_data);
+            return create_counter(program_id, accounts, instruction_data);
         }
         _ => {
             msg!("Error: 未知指令");
@@ -46,7 +46,7 @@ pub fn process_instruction(
     Ok(())
 }
 
-fn create_counter(accounts: &[AccountInfo], data: &[u8]) -> ProgramResult {
+fn create_counter(program_id: &Pubkey, accounts: &[AccountInfo], data: &[u8]) -> ProgramResult {
     let iter = &mut accounts.iter();
     let payer_account = next_account_info(iter)?;
     let counter_account = next_account_info(iter)?;
@@ -68,7 +68,8 @@ fn create_counter(accounts: &[AccountInfo], data: &[u8]) -> ProgramResult {
         return Err(ProgramError::AccountAlreadyInitialized);
     }
 
-    let space = data.len();
+    let counter_inst = Counter { count: data[0] as u64 };
+    let space = borsh::to_vec(&counter_inst)?.len();
     let lamports_required = Rent::get()?.minimum_balance(space);
 
     let instruction = system_instruction::create_account(
@@ -76,7 +77,7 @@ fn create_counter(accounts: &[AccountInfo], data: &[u8]) -> ProgramResult {
         counter_account.key,
         lamports_required,
         space as u64,
-        payer_account.key
+        program_id
     );
 
     invoke(
@@ -87,9 +88,6 @@ fn create_counter(accounts: &[AccountInfo], data: &[u8]) -> ProgramResult {
             system_program.clone()
         ]
     )?;
-
-    let number = u64::try_from_slice(data)?;
-    let counter_inst = Counter { count: number };
 
     let counter_data_ref = &mut counter_account.data.borrow_mut();
     let mut counter_data = &mut counter_data_ref[..];
@@ -104,7 +102,6 @@ fn process_increment_counter(accounts: &[AccountInfo], _instruction_data: &[u8])
     let owner_of_counter_account = next_account_info(iter)?;
     let counter_account = next_account_info(iter)?;
 
-    assert_eq!(owner_of_counter_account.key, counter_account.owner, "你不拥有此计数账户!");
     assert!(owner_of_counter_account.is_signer, "计数账户的拥有者未参与签名！");
     assert!(counter_account.is_writable, "计数账户必须是可写权限!");
 
