@@ -4,6 +4,7 @@ use solana_sdk::signature::Keypair;
 mod account_data_test;
 mod checking_data_test;
 mod close_account_test;
+mod counter_test;
 
 const DEV_NET_URL: &str ="https://devnet.rpcpool.com";
 const MY_WALLET_PUBKEY: &str = "3UVeQEnPyjsZb87kZd6mueKJVwQYoKTFoKrC2sD8RY4m";

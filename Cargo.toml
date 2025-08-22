@@ -9,6 +9,7 @@ members = [
   "account-data/program",
   "checking-account/program",
   "close-account/program",
+  "counter/program",
   "tests"
 ]
 
