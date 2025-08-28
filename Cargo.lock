@@ -767,6 +767,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "create_account"
+version = "0.1.0"
+dependencies = [
+ "solana-program",
+]
+
+[[package]]
 name = "crossbeam-channel"
 version = "0.5.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
