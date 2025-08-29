@@ -3,7 +3,7 @@
 #[cfg(test)]
 mod test {
     use std::str::FromStr;
-    use solana_client::rpc_client::RpcClient;
+    use solana_client::nonblocking::rpc_client::RpcClient;
     use solana_sdk::commitment_config::CommitmentConfig;
     use solana_sdk::instruction::{AccountMeta, Instruction};
     use solana_sdk::pubkey::Pubkey;
@@ -21,7 +21,7 @@ mod test {
 
         let new_account_keypair = Keypair::new();
 
-        let program_id = Pubkey::from_str("111").unwrap();
+        let program_id = Pubkey::from_str("64pPudd3oy1sBV5zjJJCy8wAxiyXUCeKDAnskXGncV5D").unwrap();
 
         // 2. 创建指令
         let instruction = Instruction::new_with_bytes(
@@ -35,7 +35,7 @@ mod test {
         );
 
         // 3. 创建和签署交易
-        let hash = client.get_latest_blockhash().unwrap();
+        let hash = client.get_latest_blockhash().await.unwrap();
         let transaction = Transaction::new_signed_with_payer(
             &[instruction],
             Some(&wallet_keypair.pubkey()),
@@ -44,7 +44,7 @@ mod test {
         );
 
         // 4. 发送并确认交易
-        let sign = client.send_and_confirm_transaction(&transaction).unwrap();
+        let sign = client.send_and_confirm_transaction(&transaction).await.unwrap();
 
         println!("签名：{}", sign);
     }
