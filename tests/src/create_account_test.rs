@@ -12,6 +12,7 @@ mod test {
     use solana_sdk::transaction::Transaction;
     use crate::{DEV_NET_URL, MY_WALLET_PRIVATE_KEY};
 
+
     #[tokio::test]
     async fn test() {
         // 链接solana开发网
