@@ -21,7 +21,7 @@ mod test {
 
         let new_account_keypair = Keypair::new();
 
-        let program_id = Pubkey::from_str("").unwrap();
+        let program_id = Pubkey::from_str("111").unwrap();
 
         // 2. 创建指令
         let instruction = Instruction::new_with_bytes(
