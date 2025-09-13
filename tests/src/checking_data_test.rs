@@ -1,18 +1,15 @@
 
 #[cfg(test)]
 mod test {
-    use std::str::FromStr;
+    use crate::*;
     use solana_client::nonblocking::rpc_client::RpcClient;
     use solana_sdk::commitment_config::CommitmentConfig;
-    use solana_sdk::{instruction, system_program};
     use solana_sdk::instruction::{AccountMeta, Instruction};
     use solana_sdk::pubkey::Pubkey;
-    use solana_sdk::rent::Rent;
     use solana_sdk::signature::{Keypair, Signer};
     use solana_sdk::transaction::Transaction;
-    use solana_sdk::system_instruction::create_account;
-    use solana_sdk::sysvar::Sysvar;
-    use crate::*;
+    use solana_sdk::system_program;
+    use std::str::FromStr;
 
     #[tokio::test]
     async fn test() {
