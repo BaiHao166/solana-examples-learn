@@ -728,6 +728,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "cross-program-invocatio-native-lever"
+version = "0.1.0"
+dependencies = [
+ "borsh 1.5.7",
+ "solana-program",
+]
+
+[[package]]
 name = "crossbeam-channel"
 version = "0.5.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1336,6 +1344,15 @@ dependencies = [
  "rand 0.8.5",
  "smallvec",
  "spinning_top",
+]
+
+[[package]]
+name = "hand"
+version = "0.1.0"
+dependencies = [
+ "borsh 1.5.7",
+ "cross-program-invocatio-native-lever",
+ "solana-program",
 ]
 
 [[package]]
@@ -5117,6 +5134,8 @@ dependencies = [
  "account_data",
  "borsh 1.5.7",
  "close_account",
+ "cross-program-invocatio-native-lever",
+ "once_cell",
  "solana-client",
  "solana-sdk",
  "tokio",
