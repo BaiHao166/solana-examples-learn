@@ -33,7 +33,7 @@ mod test {
         let data = borsh::to_vec(&power_status).unwrap();
 
         // 4. 创建指令
-        let program_id = Pubkey::try_from("111").unwrap();
+        let program_id = Pubkey::try_from("J84ZZ3vHUhPgPbi5bmQvzVMyFQ44JP6Tycka1rtQWXAH").unwrap();
         let instruction = Instruction::new_with_bytes(
             program_id,
             &data,
@@ -57,10 +57,10 @@ mod test {
         let signature = client.send_and_confirm_transaction(&transaction).await.unwrap();
         println!("签名：{}", signature);
 
-        test_pull_lever().await;
+        // test_pull_lever().await;
     }
 
-    // #[tokio::test]
+    #[tokio::test]
     async fn test_pull_lever() {
         // 1. 连接的solana开发网
         let client = RpcClient::new_with_commitment(DEV_NET_URL.to_string(), CommitmentConfig::confirmed());
@@ -71,8 +71,8 @@ mod test {
         // 3. 创建指令
         // 创建指令数据
         let set_power_status = SetPowerStatus { name: "咚咚熊".to_string() };
-        let program_id = Pubkey::try_from("3333").unwrap();
-        let level_program_id = Pubkey::try_from("2222").unwrap();
+        let program_id = Pubkey::try_from("D93fHmHRULNauAyDULRPiEABNkaCEQs7N1cg8EmXK8Hf").unwrap();
+        let level_program_id = Pubkey::try_from("J84ZZ3vHUhPgPbi5bmQvzVMyFQ44JP6Tycka1rtQWXAH").unwrap();
         let instruction = Instruction::new_with_borsh(
             program_id,
             &set_power_status,

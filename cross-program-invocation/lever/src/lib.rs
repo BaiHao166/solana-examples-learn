@@ -5,7 +5,7 @@ use solana_program::program::invoke;
 use solana_program::pubkey::Pubkey;
 use solana_program::rent::Rent;
 use solana_program::sysvar::Sysvar;
-use solana_program::{msg, system_instruction};
+use solana_program::{entrypoint, msg, system_instruction};
 
 #[derive(BorshSerialize, BorshDeserialize, Debug)]
 pub struct SetPowerStatus {
