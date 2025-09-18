@@ -7,6 +7,7 @@ mod close_account_test;
 mod counter_test;
 mod create_account_test;
 mod program_invocation_test;
+mod favorite_test;
 
 const DEV_NET_URL: &str ="https://devnet.rpcpool.com";
 const MY_WALLET_PUBKEY: &str = "3UVeQEnPyjsZb87kZd6mueKJVwQYoKTFoKrC2sD8RY4m";

@@ -5143,6 +5143,7 @@ dependencies = [
  "borsh 1.5.7",
  "close_account",
  "cross-program-invocatio-native-lever",
+ "favorite",
  "once_cell",
  "solana-client",
  "solana-sdk",
