@@ -10,7 +10,7 @@ use solana_program::sysvar::Sysvar;
 
 #[derive(BorshSerialize, BorshDeserialize)]
 pub struct InitRentVaultArgs {
-    fund_lamports: u64,
+    pub fund_lamports: u64,
 }
 
 /**

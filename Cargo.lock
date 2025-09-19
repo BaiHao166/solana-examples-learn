@@ -5153,6 +5153,7 @@ dependencies = [
  "cross-program-invocatio-native-lever",
  "favorite",
  "once_cell",
+ "pda-rent-payer",
  "solana-client",
  "solana-sdk",
  "tokio",
