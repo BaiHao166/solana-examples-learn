@@ -9,6 +9,7 @@ close_account = { path = "../close-account/program" }
 cross-program-invocatio-native-lever = { path = "../cross-program-invocation/lever" }
 favorite = { path = "../favorite" }
 pda-rent-payer = { path = "../pda-rent-payer" }
+realloc = { path = "../realloc" }
 solana-sdk = "2.3.1"
 solana-client = "2.3.7"
 borsh = "1.5.7"
