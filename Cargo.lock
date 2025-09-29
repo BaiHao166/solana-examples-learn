@@ -5171,6 +5171,7 @@ dependencies = [
  "once_cell",
  "pda-rent-payer",
  "realloc",
+ "repository-layout",
  "solana-client",
  "solana-sdk",
  "tokio",
