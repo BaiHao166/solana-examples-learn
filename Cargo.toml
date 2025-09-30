@@ -11,6 +11,6 @@ members = [
   "close-account/program",
   "counter/program", "create-account/program", "cross-program-invocation/hand", "cross-program-invocation/lever", "favorite", "pda-rent-payer", "realloc", "repository-layout",
   "tests"
-]
+, "transfer-sol"]
 
 [dependencies]
