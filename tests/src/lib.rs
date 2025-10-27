@@ -11,6 +11,7 @@ mod favorite_test;
 mod pda_rent_payer_test;
 mod realloc_test;
 mod reposiory_layour_test;
+mod token_study;
 
 const DEV_NET_URL: &str ="https://devnet.rpcpool.com";
 const MY_WALLET_PUBKEY: &str = "3UVeQEnPyjsZb87kZd6mueKJVwQYoKTFoKrC2sD8RY4m";
